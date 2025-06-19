@@ -6,6 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F30FEAEA2DF905BC008E1ABA /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAE92DF905B5008E1ABA /* MotionManager.swift */; };
+		F30FEAEC2DFA46FF008E1ABA /* LabeledPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAEB2DFA46EC008E1ABA /* LabeledPlace.swift */; };
+		F30FEAEE2DFA4728008E1ABA /* LabeledPlaceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAED2DFA471E008E1ABA /* LabeledPlaceStore.swift */; };
+		F30FEAF02DFA4753008E1ABA /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAEF2DFA474B008E1ABA /* ContextManager.swift */; };
+		F30FEAF22DFC9220008E1ABA /* GroceryListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAF12DFC9211008E1ABA /* GroceryListManager.swift */; };
+		F30FEAF42DFC925D008E1ABA /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAF32DFC924E008E1ABA /* GroceryListView.swift */; };
+		F30FEAF62DFC99D5008E1ABA /* VoiceCommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAF52DFC99CA008E1ABA /* VoiceCommandManager.swift */; };
+		F30FEAF82DFCA8BE008E1ABA /* TraderJoesCupertino.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */; };
+		F30FEAFA2DFD13A2008E1ABA /* SpeechTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */; };
+		F30FEAFC2DFD3716008E1ABA /* SpeechHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F30FEAC62DF8E0A1008E1ABA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,11 +40,34 @@
 		F30FEAB72DF8E09E008E1ABA /* ProactiveAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProactiveAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30FEAC52DF8E0A1008E1ABA /* ProactiveAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProactiveAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F30FEACF2DF8E0A1008E1ABA /* ProactiveAssistantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProactiveAssistantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30FEAE92DF905B5008E1ABA /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
+		F30FEAEB2DFA46EC008E1ABA /* LabeledPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledPlace.swift; sourceTree = "<group>"; };
+		F30FEAED2DFA471E008E1ABA /* LabeledPlaceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledPlaceStore.swift; sourceTree = "<group>"; };
+		F30FEAEF2DFA474B008E1ABA /* ContextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
+		F30FEAF12DFC9211008E1ABA /* GroceryListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListManager.swift; sourceTree = "<group>"; };
+		F30FEAF32DFC924E008E1ABA /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
+		F30FEAF52DFC99CA008E1ABA /* VoiceCommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCommandManager.swift; sourceTree = "<group>"; };
+		F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TraderJoesCupertino.gpx; sourceTree = "<group>"; };
+		F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTestView.swift; sourceTree = "<group>"; };
+		F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F30FEAE62DF8FC0A008E1ABA /* Exceptions for "ProactiveAssistant" folder in "ProactiveAssistant" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F30FEAB62DF8E09E008E1ABA /* ProactiveAssistant */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F30FEAB92DF8E09E008E1ABA /* ProactiveAssistant */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F30FEAE62DF8FC0A008E1ABA /* Exceptions for "ProactiveAssistant" folder in "ProactiveAssistant" target */,
+			);
 			path = ProactiveAssistant;
 			sourceTree = "<group>";
 		};
@@ -75,6 +111,16 @@
 		F30FEAAE2DF8E09E008E1ABA = {
 			isa = PBXGroup;
 			children = (
+				F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */,
+				F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */,
+				F30FEAF52DFC99CA008E1ABA /* VoiceCommandManager.swift */,
+				F30FEAF32DFC924E008E1ABA /* GroceryListView.swift */,
+				F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */,
+				F30FEAF12DFC9211008E1ABA /* GroceryListManager.swift */,
+				F30FEAEF2DFA474B008E1ABA /* ContextManager.swift */,
+				F30FEAED2DFA471E008E1ABA /* LabeledPlaceStore.swift */,
+				F30FEAEB2DFA46EC008E1ABA /* LabeledPlace.swift */,
+				F30FEAE92DF905B5008E1ABA /* MotionManager.swift */,
 				F30FEAB92DF8E09E008E1ABA /* ProactiveAssistant */,
 				F30FEAC82DF8E0A1008E1ABA /* ProactiveAssistantTests */,
 				F30FEAD22DF8E0A1008E1ABA /* ProactiveAssistantUITests */,
@@ -212,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30FEAF82DFCA8BE008E1ABA /* TraderJoesCupertino.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +283,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F30FEAF02DFA4753008E1ABA /* ContextManager.swift in Sources */,
+				F30FEAF42DFC925D008E1ABA /* GroceryListView.swift in Sources */,
+				F30FEAFA2DFD13A2008E1ABA /* SpeechTestView.swift in Sources */,
+				F30FEAF62DFC99D5008E1ABA /* VoiceCommandManager.swift in Sources */,
+				F30FEAFC2DFD3716008E1ABA /* SpeechHelper.swift in Sources */,
+				F30FEAEE2DFA4728008E1ABA /* LabeledPlaceStore.swift in Sources */,
+				F30FEAEA2DF905BC008E1ABA /* MotionManager.swift in Sources */,
+				F30FEAEC2DFA46FF008E1ABA /* LabeledPlace.swift in Sources */,
+				F30FEAF22DFC9220008E1ABA /* GroceryListManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +453,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProactiveAssistant/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -436,6 +493,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ProactiveAssistant/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

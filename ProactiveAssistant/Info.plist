@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleIdentifier</key>
+	<string></string>
+	<key>NSMotionUsageDescription</key>
+	<string>This app uses motion data to detect if you are walking, driving, or stationary.
+This app uses motion data to detect if you are walking, driving, or stationary.
+This app uses motion data to detect if you are walking, driving, or stationary.
+</string>
+	<key>CFBundleExecutable</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs your location to detect your context.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This app user your location even in the background for context detection.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>This app uses speech recognition for hands-on voice commands.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app uses microphone for voice commands.</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+</dict>
+</plist>
