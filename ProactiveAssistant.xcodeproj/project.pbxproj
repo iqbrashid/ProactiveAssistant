@@ -17,6 +17,18 @@
 		F30FEAF82DFCA8BE008E1ABA /* TraderJoesCupertino.gpx in Resources */ = {isa = PBXBuildFile; fileRef = F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */; };
 		F30FEAFA2DFD13A2008E1ABA /* SpeechTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */; };
 		F30FEAFC2DFD3716008E1ABA /* SpeechHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */; };
+		F3124F8D2E14BEAD00A2BB6E /* MapStorePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3124F8C2E14BE9000A2BB6E /* MapStorePickerView.swift */; };
+		F3349EFC2E0CFFCE00999C1E /* OnboardingFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349EFB2E0CFFB600999C1E /* OnboardingFlowView.swift */; };
+		F3349EFE2E0D000900999C1E /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349EFD2E0D000700999C1E /* WelcomeScreen.swift */; };
+		F3349F002E0D009000999C1E /* PermissionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349EFF2E0D008E00999C1E /* PermissionsScreen.swift */; };
+		F3349F022E0D00DD00999C1E /* StorePickerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F012E0D00DA00999C1E /* StorePickerScreen.swift */; };
+		F3349F042E0D032800999C1E /* StoreSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F032E0D032600999C1E /* StoreSearchManager.swift */; };
+		F3349F082E0E02CC00999C1E /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F072E0E02C700999C1E /* AppData.swift */; };
+		F3349F0A2E0E030400999C1E /* ProactiveAssistantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F092E0E02FF00999C1E /* ProactiveAssistantApp.swift */; };
+		F3349F0E2E0E059700999C1E /* ListCreationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F0D2E0E058D00999C1E /* ListCreationScreen.swift */; };
+		F3349F102E0E05D400999C1E /* FinishScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F0F2E0E05CC00999C1E /* FinishScreen.swift */; };
+		F3349F162E0E1F7A00999C1E /* AddItemSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F152E0E1F7200999C1E /* AddItemSheet.swift */; };
+		F3349F182E133CCD00999C1E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3349F172E133CC200999C1E /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +62,18 @@
 		F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TraderJoesCupertino.gpx; sourceTree = "<group>"; };
 		F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTestView.swift; sourceTree = "<group>"; };
 		F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechHelper.swift; sourceTree = "<group>"; };
+		F3124F8C2E14BE9000A2BB6E /* MapStorePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapStorePickerView.swift; sourceTree = "<group>"; };
+		F3349EFB2E0CFFB600999C1E /* OnboardingFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlowView.swift; sourceTree = "<group>"; };
+		F3349EFD2E0D000700999C1E /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		F3349EFF2E0D008E00999C1E /* PermissionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsScreen.swift; sourceTree = "<group>"; };
+		F3349F012E0D00DA00999C1E /* StorePickerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePickerScreen.swift; sourceTree = "<group>"; };
+		F3349F032E0D032600999C1E /* StoreSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchManager.swift; sourceTree = "<group>"; };
+		F3349F072E0E02C700999C1E /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		F3349F092E0E02FF00999C1E /* ProactiveAssistantApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProactiveAssistantApp.swift; sourceTree = "<group>"; };
+		F3349F0D2E0E058D00999C1E /* ListCreationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCreationScreen.swift; sourceTree = "<group>"; };
+		F3349F0F2E0E05CC00999C1E /* FinishScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishScreen.swift; sourceTree = "<group>"; };
+		F3349F152E0E1F7200999C1E /* AddItemSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemSheet.swift; sourceTree = "<group>"; };
+		F3349F172E133CC200999C1E /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -111,6 +135,17 @@
 		F30FEAAE2DF8E09E008E1ABA = {
 			isa = PBXGroup;
 			children = (
+				F3124F8C2E14BE9000A2BB6E /* MapStorePickerView.swift */,
+				F3349F152E0E1F7200999C1E /* AddItemSheet.swift */,
+				F3349F0D2E0E058D00999C1E /* ListCreationScreen.swift */,
+				F3349F0F2E0E05CC00999C1E /* FinishScreen.swift */,
+				F3349F072E0E02C700999C1E /* AppData.swift */,
+				F3349F092E0E02FF00999C1E /* ProactiveAssistantApp.swift */,
+				F3349F032E0D032600999C1E /* StoreSearchManager.swift */,
+				F3349F012E0D00DA00999C1E /* StorePickerScreen.swift */,
+				F3349EFF2E0D008E00999C1E /* PermissionsScreen.swift */,
+				F3349EFD2E0D000700999C1E /* WelcomeScreen.swift */,
+				F3349EFB2E0CFFB600999C1E /* OnboardingFlowView.swift */,
 				F30FEAFB2DFD370E008E1ABA /* SpeechHelper.swift */,
 				F30FEAF92DFD1396008E1ABA /* SpeechTestView.swift */,
 				F30FEAF52DFC99CA008E1ABA /* VoiceCommandManager.swift */,
@@ -118,6 +153,7 @@
 				F30FEAF72DFCA8BE008E1ABA /* TraderJoesCupertino.gpx */,
 				F30FEAF12DFC9211008E1ABA /* GroceryListManager.swift */,
 				F30FEAEF2DFA474B008E1ABA /* ContextManager.swift */,
+				F3349F172E133CC200999C1E /* Store.swift */,
 				F30FEAED2DFA471E008E1ABA /* LabeledPlaceStore.swift */,
 				F30FEAEB2DFA46EC008E1ABA /* LabeledPlace.swift */,
 				F30FEAE92DF905B5008E1ABA /* MotionManager.swift */,
@@ -284,14 +320,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				F30FEAF02DFA4753008E1ABA /* ContextManager.swift in Sources */,
+				F3349F042E0D032800999C1E /* StoreSearchManager.swift in Sources */,
 				F30FEAF42DFC925D008E1ABA /* GroceryListView.swift in Sources */,
+				F3349F0A2E0E030400999C1E /* ProactiveAssistantApp.swift in Sources */,
 				F30FEAFA2DFD13A2008E1ABA /* SpeechTestView.swift in Sources */,
+				F3349F182E133CCD00999C1E /* Store.swift in Sources */,
 				F30FEAF62DFC99D5008E1ABA /* VoiceCommandManager.swift in Sources */,
+				F3349F002E0D009000999C1E /* PermissionsScreen.swift in Sources */,
 				F30FEAFC2DFD3716008E1ABA /* SpeechHelper.swift in Sources */,
+				F3124F8D2E14BEAD00A2BB6E /* MapStorePickerView.swift in Sources */,
+				F3349EFE2E0D000900999C1E /* WelcomeScreen.swift in Sources */,
 				F30FEAEE2DFA4728008E1ABA /* LabeledPlaceStore.swift in Sources */,
 				F30FEAEA2DF905BC008E1ABA /* MotionManager.swift in Sources */,
+				F3349F022E0D00DD00999C1E /* StorePickerScreen.swift in Sources */,
+				F3349F0E2E0E059700999C1E /* ListCreationScreen.swift in Sources */,
+				F3349F102E0E05D400999C1E /* FinishScreen.swift in Sources */,
 				F30FEAEC2DFA46FF008E1ABA /* LabeledPlace.swift in Sources */,
+				F3349F162E0E1F7A00999C1E /* AddItemSheet.swift in Sources */,
+				F3349EFC2E0CFFCE00999C1E /* OnboardingFlowView.swift in Sources */,
 				F30FEAF22DFC9220008E1ABA /* GroceryListManager.swift in Sources */,
+				F3349F082E0E02CC00999C1E /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

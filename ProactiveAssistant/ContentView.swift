@@ -1,143 +1,173 @@
 import SwiftUI
 import AVFoundation
-import UserNotifications
-
-class SpeechDelegate: NSObject, AVSpeechSynthesizerDelegate, ObservableObject {
-    @Published var isSpeaking: Bool = false
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) { isSpeaking = true }
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) { isSpeaking = false }
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) { isSpeaking = false }
-}
 
 struct ContentView: View {
-    @StateObject var groceryListManager = GroceryListManager()
-    @StateObject var contextManager = ContextManager()
-    @State private var selectedStore: String = "Trader Joe's"
-    @State private var newStoreName: String = ""
-    @State private var showAddStoreAlert = false
+    @EnvironmentObject var appData: AppData
+    @EnvironmentObject var contextManager: ContextManager
+    @State private var showStorePicker = false
+    @State private var editingItem: (store: Store, oldValue: String)? = nil
+    @State private var editedText: String = ""
+    @State private var showAddItemSheet: Store? = nil
+    @State private var storeToDelete: Store? = nil
+    @State private var showDeleteStoreAlert = false
     @State private var speechSynthesizer = AVSpeechSynthesizer()
-    @StateObject private var speechDelegate = SpeechDelegate()
-    @State private var didCheckNotifications = false
 
     var body: some View {
-        VStack(spacing: 24) {
-            Picker("Store", selection: $selectedStore) {
-                ForEach(Array(groceryListManager.lists.keys.sorted()), id: \.self) { store in
-                    Text(store).tag(store)
-                }
-                Text("+ Add Store").tag("+ Add Store")
-            }
-            .pickerStyle(MenuPickerStyle())
-            .onChange(of: selectedStore) {
-                if selectedStore == "+ Add Store" {
-                    showAddStoreAlert = true
-                } else if !selectedStore.isEmpty {
-                    if !speechDelegate.isSpeaking {
-                        speakList(for: selectedStore)
+        NavigationView {
+            List {
+                if appData.stores.isEmpty {
+                    Text("No stores yet. Tap \"Manage Stores\" to add your first store!")
+                        .foregroundColor(.secondary)
+                        .padding()
+                } else {
+                    ForEach(appData.stores) { store in
+                        StoreSection(
+                            store: store,
+                            editingItem: $editingItem,
+                            editedText: $editedText,
+                            showAddItemSheet: $showAddItemSheet,
+                            storeToDelete: $storeToDelete,
+                            showDeleteStoreAlert: $showDeleteStoreAlert,
+                            speakList: speakList
+                        )
+                        .environmentObject(appData)
                     }
                 }
             }
-
-            GroceryListView(groceryListManager: groceryListManager, selectedStore: selectedStore)
-                .padding(.bottom)
-
-            Button {
-                speakList(for: selectedStore)
-            } label: {
-                HStack {
-                    if speechDelegate.isSpeaking {
-                        ProgressView()
-                            .progressViewStyle(CircularProgressViewStyle())
-                            .frame(width: 20, height: 20)
-                    }
-                    Text("Read List Aloud")
-                }
-            }
-            .disabled(groceryListManager.items(for: selectedStore).isEmpty || speechDelegate.isSpeaking)
-            .padding()
-
-            Button("Simulate Trader Joe's Entry") {
-                contextManager.detectedStore = nil
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    contextManager.detectedStore = "Trader Joe's"
-                }
-            }
-            .padding()
-            .background(Color.yellow.opacity(0.2))
-            .cornerRadius(8)
-
-            Spacer()
-        }
-        .padding()
-        // Listen for context (store) changes from ContextManager
-        .onChange(of: contextManager.detectedStore) { newStore in
-            guard let store = newStore else { return }
-            selectedStore = store
-        }
-        .onAppear {
-            requestNotificationPermission()
-            if groceryListManager.lists.isEmpty {
-                groceryListManager.lists["Trader Joe's"] = []
-                selectedStore = "Trader Joe's"
-            } else if !groceryListManager.lists.keys.contains(selectedStore) {
-                selectedStore = groceryListManager.lists.keys.first ?? "Trader Joe's"
-            }
-            speechSynthesizer.delegate = speechDelegate
-
-            // Check for notification response ONLY on first launch in session
-            if !didCheckNotifications {
-                didCheckNotifications = true
-                UNUserNotificationCenter.current().getDeliveredNotifications { notifs in
-                    for notif in notifs {
-                        if notif.request.content.title == "Grocery List Reminder" {
-                            // Clear notification and trigger speech
-                            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: [notif.request.identifier])
-                            DispatchQueue.main.async {
-                                speakList(for: selectedStore)
-                            }
-                        }
+            .listStyle(InsetGroupedListStyle())
+            .navigationTitle("Stores & Lists")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Manage Stores") {
+                        showStorePicker = true
                     }
                 }
             }
         }
-        .alert("Add a new store", isPresented: $showAddStoreAlert, actions: {
-            TextField("Store name", text: $newStoreName)
-            Button("Add", action: {
-                let trimmed = newStoreName.trimmingCharacters(in: .whitespaces)
-                guard !trimmed.isEmpty else { return }
-                if groceryListManager.lists[trimmed] == nil {
-                    groceryListManager.lists[trimmed] = []
+        .sheet(isPresented: $showStorePicker) {
+            MapStorePickerView(isPresented: $showStorePicker)
+                .environmentObject(appData)
+        }
+        .sheet(item: $showAddItemSheet) { store in
+            AddItemSheet(store: store)
+                .environmentObject(appData)
+        }
+        .alert("Edit Item", isPresented: Binding<Bool>(
+            get: { editingItem != nil },
+            set: { if !$0 { editingItem = nil } }
+        )) {
+            TextField("Item", text: $editedText)
+            Button("Save") {
+                if let (store, oldValue) = editingItem, !editedText.trimmingCharacters(in: .whitespaces).isEmpty {
+                    appData.editItem(oldValue, to: editedText, in: store)
                 }
-                selectedStore = trimmed
-                newStoreName = ""
-            })
-            Button("Cancel", role: .cancel, action: {
-                selectedStore = groceryListManager.lists.keys.sorted().first ?? "Trader Joe's"
-            })
-        })
-    }
-
-    // MARK: - Notification permission helper
-
-    func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
-            if let error = error {
-                print("Notification permission error: \(error)")
+                editingItem = nil
+            }
+            Button("Cancel", role: .cancel) {
+                editingItem = nil
+            }
+        }
+        .alert("Delete Store", isPresented: $showDeleteStoreAlert) {
+            Button("Delete", role: .destructive) {
+                if let store = storeToDelete {
+                    appData.removeStore(store)
+                }
+                storeToDelete = nil
+            }
+            Button("Cancel", role: .cancel) {
+                storeToDelete = nil
+            }
+        } message: {
+            if let store = storeToDelete, let items = appData.groceryLists[store.id], !items.isEmpty {
+                Text("Are you sure you want to remove \"\(store.name)\"? This will also delete \(items.count) item(s) in the list.")
             } else {
-                print("Notification permission granted: \(granted)")
+                Text("Are you sure you want to remove this store?")
             }
+        }
+        .onChange(of: contextManager.detectedStoreID) { newID in
+            guard let storeID = newID,
+                  let store = appData.stores.first(where: { $0.id == storeID }) else { return }
+            speakList(for: store)
         }
     }
 
-    // MARK: - Speak
-
-    func speakList(for store: String) {
-        let items = groceryListManager.items(for: store)
+    func speakList(for store: Store) {
+        let items = appData.groceryLists[store.id] ?? []
         guard !items.isEmpty else { return }
-        let listText = "Your \(store) grocery list is: " + items.joined(separator: ", ")
+        let listText = "Your \(store.name) grocery list is: " + items.joined(separator: ", ")
         let utterance = AVSpeechUtterance(string: listText)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
         speechSynthesizer.stopSpeaking(at: .immediate)
         speechSynthesizer.speak(utterance)
+    }
+}
+
+// === Subview: StoreSection ===
+struct StoreSection: View {
+    let store: Store
+    @EnvironmentObject var appData: AppData
+    @Binding var editingItem: (store: Store, oldValue: String)?
+    @Binding var editedText: String
+    @Binding var showAddItemSheet: Store?
+    @Binding var storeToDelete: Store?
+    @Binding var showDeleteStoreAlert: Bool
+    var speakList: (Store) -> Void
+
+    var body: some View {
+        Section(
+            header: HStack {
+                Text(store.name)
+                    .fontWeight(.bold)
+                Spacer()
+                Button {
+                    storeToDelete = store
+                    showDeleteStoreAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                }
+                .buttonStyle(BorderlessButtonStyle())
+            }
+        ) {
+            ForEach(appData.groceryLists[store.id] ?? [], id: \.self) { item in
+                HStack {
+                    Text(item)
+                    Spacer()
+                    Button(action: {
+                        editingItem = (store, item)
+                        editedText = item
+                    }) {
+                        Image(systemName: "pencil")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                    Button(action: {
+                        appData.removeItem(item, from: store)
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(.red)
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                }
+            }
+            .onDelete { idx in
+                if let first = idx.first {
+                    let item = appData.groceryLists[store.id]?[first]
+                    if let item = item {
+                        appData.removeItem(item, from: store)
+                    }
+                }
+            }
+
+            Button(action: { showAddItemSheet = store }) {
+                Label("Add Item", systemImage: "plus.circle.fill")
+            }
+            .buttonStyle(.bordered)
+            .padding(.vertical, 4)
+
+            Button("Listen to List") {
+                speakList(store)
+            }
+            .padding(.vertical, 4)
+        }
     }
 }
